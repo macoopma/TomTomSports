@@ -6,4 +6,14 @@ https://developer.tomtom.com
 
 So let's see what we get when we try to access this ....
 
-I managed to extract some data with some very rudimentary PHP scripts, I will cleanup some things and generalise it a bit more ...
+To get this up and running you need
+* a server that is accessible over the internet as the TomTom will call an URL of your application to authorise it.
+* an HTTP server
+* capable of PHP
+* python, with these packages: 
+** requests
+** json
+** ast
+** pandas
+** pymysql
+** MySQLdb
