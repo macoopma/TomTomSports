@@ -11,9 +11,10 @@ To get this up and running you need
 * an HTTP server
 * capable of PHP
 * python, with these packages: 
-** requests
-** json
-** ast
-** pandas
-** pymysql
-** MySQLdb
+ * requests
+ * json
+ * ast
+ * pandas
+ * pymysql
+ * MySQLdb
+* MySQL server
