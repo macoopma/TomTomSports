@@ -33,4 +33,6 @@ client_name=*your application name as registered at TomTom*
   
 As the application communicates with the API of TomTom it will add additional parameters to the config.ini file.
 
-Once you have done all that, you can open the https://url_to_your_server/html/index.php page and continue from there.
+Once you have done all that, you can open the https://url_to_your_server/html/index.php page and continue from there. 
+As soon as you have received an authorisation code, you can then manually start the getdata.py script to read in the data and copy it to the MySQL database.
+
