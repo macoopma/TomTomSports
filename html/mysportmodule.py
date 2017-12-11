@@ -24,11 +24,6 @@ def writeconfig(config):
         fp.close()
 
 def refreshtoken(config):
-#    readconfig()
-    print ("Starting refreshtoken : ")
-    print (config)
-    print ("++++++++++++++++++++++++++++++++++")
-    
     url = 'https://api.tomtom.com/mysports/oauth2/token'
 
     #enc = base64.b64encode(bytes( config['client_id'] + ':' + config['client_secret'] , 'utf-8'))
