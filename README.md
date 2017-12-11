@@ -5,6 +5,7 @@ Since a while I have this TomTom sports & fitness watch and now I noticed there 
 https://developer.tomtom.com
 
 So let's see what we get when we try to access this ....
+I made a small application using a mix of PHP and Python that is capable of extracting certain information from the TomTom cloud and copy that to a MySQL database. At this moment only the "tracking" table is copied over.
 
 To get this up and running you need
 * a server that is accessible over the internet as the TomTom will call an URL of your application to authorise it.
@@ -31,3 +32,5 @@ client_name=*your application name as registered at TomTom*
 <BR>password=*password to access MySQL*
   
 As the application communicates with the API of TomTom it will add additional parameters to the config.ini file.
+
+Once you have done all that, you can open the https://url_to_your_server/html/index.php page and continue from there.
