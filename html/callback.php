@@ -16,13 +16,6 @@
 </div>
 
 <?php 
-
-// https://mysports.tomtom.com/app/authorize-client/?client_name=sportdata&scope=activities%20tracking&redirect_uri=https:%2F%2Ftt.coopmans.org%2Ftomtom%2Fcallback.php&client_id=d2d70f76-212b-44b1-9366-d8f4b59bb707&state=stap1
-
-//https://mysports.tomtom.com/app/authorize-client/?client_name=sportdata&scope=activities%20tracking%20heart_rate%20physiology&redirect_uri=https:%2F%2Ftt.coopmans.org%2Ftomtom%2Fcallback.php&client_id=d2d70f76-212b-44b1-9366-d8f4b59bb707&state=stap1
- 
-// geeft dit antwoord : https://tt.coopmans.org/tomtom/callback.php?code=fpa2twPjWHVSIWxocKu_S6ki1R_QJp-dP9IT8mNKnYVXEuquA3XB9sClyJdPyS2PuN6P6Qt9M8rz0LG_JEeDqGBDUEyBbUutMthKNf4Pp8M5&state=stap1
-
  include 'functions.php' ;
  $config = get_config_file ("./config.ini");
  ?> 
