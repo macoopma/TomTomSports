@@ -36,7 +36,7 @@ client_name=*your application name as registered at TomTom*
 <BR>username=*username of MySQL*
 <BR>password=*password to access MySQL*
   
-As the application communicates with the API of TomTom it will add additional parameters to the config.ini file.
+As the application communicates with the API of TomTom it will add additional parameters to the config.ini file. As stated above, the user running your webserver needs to have update rights on this config.ini file.
 
 Once you have done all that, you can open the https://url_to_your_server/html/index.php page and continue from there. 
 As soon as you have received an authorisation code, you can then manually start the getdata.py script to read in the data and copy it to the MySQL database.
