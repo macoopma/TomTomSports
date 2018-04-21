@@ -11,6 +11,9 @@ To get this up and running you need
 * a server that is accessible over the internet as the TomTom will call an URL of your application to authorise it.
 * an HTTP server
 * capable of PHP
+   * make sure that OpenSSL is enabled
+   * allow_url_fopen is on
+   * the user that runs the web server needs update rights on the config.ini file
 * python, with these packages: 
    * requests
    * json
