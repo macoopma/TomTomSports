@@ -28,6 +28,8 @@ First step is to register the application at TomTom's web site, start here: http
 
 client_name=*your application name as registered at TomTom*
 <BR>client_id=*the client ID as given to you by TomTom*
+<BR>client_secret=*the client secret as given to you by TomTom*
+<BR>api_key=*the API key as given to you by TomTom*  
 <BR>redirect_uri=*the redirect URL as registered at TomTom-should point to the html/callback.php file on your server*
 <BR>servername=*your MySQL server*
 <BR>dbname=*The MySQL Database name*
