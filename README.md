@@ -35,7 +35,9 @@ client_name=*your application name as registered at TomTom*
 <BR>dbname=*The MySQL Database name*
 <BR>username=*username of MySQL*
 <BR>password=*password to access MySQL*
-  
+ 
+the TCP port of ySQL is currently hardcoded to 3307 
+
 As the application communicates with the API of TomTom it will add additional parameters to the config.ini file. As stated above, the user running your webserver needs to have update rights on this config.ini file.
 
 Once you have done all that, you can open the https://url_to_your_server/html/index.php page and continue from there. 
