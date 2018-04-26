@@ -21,6 +21,7 @@ To get this up and running you need
    * pandas
    * pymysql
    * MySQLdb
+   * sqlparse
 * MySQL server
 
 First step is to register the application at TomTom's web site, start here: https://developer.tomtom.com/ create a userid and create an application. 
