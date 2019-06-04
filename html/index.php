@@ -46,6 +46,7 @@ td,th{
 <?php 
  include 'functions.php' ;
  $config = get_config_file ("./config.ini");
+
  ?>   
 
 
@@ -55,7 +56,7 @@ td,th{
 		
 		<div class="intro">
             <p>
-<H2> TomTom Mysportcloud data access </H2>
+<H2> TomTom Mysportcloud data access  - ChristoNas</H2>
 
             </p>
         <div class="content-main">

@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `tracking` (
   `id`               int(11) NOT NULL,
   `index`            int(11) NOT NULL,
   `date`             datetime NOT NULL,
-  `steps`            smallint(5),
+  `steps`            int,
   `metabolic_energy` int,
   `active_time`      int,
   `distance`         int,
@@ -17,8 +17,9 @@ CREATE TABLE IF NOT EXISTS `tracking` (
   `hr_avg`           smallint(3),
   `hr_rest`          smallint(3)
  
-) ENGINE=InnoDB AUTO_INCREMENT=770 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+ 
  ALTER TABLE `tracking` ADD INDEX(`id`);
  ALTER TABLE `tracking` CHANGE `id` `id`  int(11) NOT NULL AUTO_INCREMENT;
  ALTER TABLE `tracking` ADD UNIQUE(`id`);

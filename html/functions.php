@@ -28,7 +28,7 @@ function get_config_file($file) {
  echo "</TABLE > \n";
  
 
- $config = get_config_file ("./configtest.ini");
+ $config = get_config_file ("./config.ini");
  echo "<P><PRE>" . PHP_EOL ;
 
  var_dump ($config) ;

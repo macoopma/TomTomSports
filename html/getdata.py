@@ -4,13 +4,14 @@ import json
 import ast
 import datetime
 import pandas as pd
-
+ 
 from pandas.io import sql
 from sqlalchemy import create_engine
 
 import pymysql
 pymysql.install_as_MySQLdb()
 import MySQLdb
+import sqlparse
 
 import mysportmodule
 
@@ -36,7 +37,8 @@ config = mysportmodule.read_config(config)
 db = MySQLdb.connect(host=config ['servername'] ,    # your host, usually localhost
                      user=config ['username'],         # your username
                      passwd=config ['password'],  # your password
-                     db=config ['dbname'])        # name of the data base
+                     db=config ['dbname'],         # name of the data base
+                     port=int(config ['port']) )
 
 # you must create a Cursor object. It will let you execute all the queries you need
 cur = db.cursor()
@@ -47,9 +49,14 @@ cur.execute(stmt)
 result = cur.fetchone()
 if not result:
     # there are no tables named "tableName"
-    with open ("createtable.sql", "r") as myfile:
-        sql=myfile.read()
-        cur.execute (sql)
+    with open('createtable.sql', 'rb') as f:
+      for statement in sqlparse.split(f.read()):
+        if not statement:
+            continue
+        cur.execute(statement)
+
+
+
         
 # We have to delete the record with the highest date, as when we last synchronised probably the day was not yet complete. 
 # select the highest date
@@ -108,9 +115,10 @@ val1 = json.loads(json.dumps(val))
 #print ("val1 is")
 #print (val1)
 
-# let's make a dictionary with all the items we want to read from the data
-data = {"steps":"origin_device",
-        "metabolic_energy":"origin_device",
+# let's make a dictionary with all the items we want to read from the data, except steps as steps is used to make the first round as it has all the dates, and previouosly i usedd whatever column was first and missed some dates because of that ....
+
+
+data = {"metabolic_energy":"origin_device",
         "active_time":"origin_device", 
         "distance":"origin_device",
         "sleep":"origin_device",
@@ -121,10 +129,21 @@ data = {"steps":"origin_device",
         "hr_max":"summary",
         "hr_avg":"summary",
         "hr_rest":"summary"
-
         }
 
-first_run = True
+data_dict={}
+for serie in val1['series']["steps"] :
+    for k,v in serie.items():
+#        print (k) 
+        if (k >= str(maxdate.date())) :
+            this_data= v.get ("origin_device",0)
+            data_dict[k] = this_data
+table_pd = pd.DataFrame (data_dict.items(), columns=['date', 'steps']) 
+
+#print(data_dict)
+
+#first_run = True
+
 for data_item in data.keys():
     data_dict={}
     for serie in val1['series'][data_item]:
@@ -133,22 +152,22 @@ for data_item in data.keys():
                 this_data= v.get (data[data_item],0)
                 data_dict[k] = this_data
 
-    if first_run :
-        first_run = False
-        table_pd = pd.DataFrame (data_dict.items(), columns=['date', data_item]) 
-    else:
-        table_pd[data_item] = table_pd['date'].map(data_dict)
+    table_pd[data_item] = table_pd['date'].map(data_dict)
 
 table_pd['date'] = pd.to_datetime (table_pd['date'])
 
 table_pd=table_pd.sort_values ('date')
 
-engine = create_engine("mysql+pymysql://{user}:{pw}@{servername}/{db}"
+#print (table_pd)
+
+engine = create_engine("mysql+pymysql://{user}:{pw}@{servername}:{port}/{db}"
                        .format(user=config['username'],
                                pw=config["password"],
                                servername = config['servername'],
-                               db=config["dbname"]))
-
+                               port=int(config["port"]),
+                               db=config["dbname"]
+                               ))
+# port=config["port"],
 table_pd.to_sql(con=engine, name='tracking', if_exists='append')
 
 #end
